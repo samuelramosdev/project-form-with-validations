@@ -33,5 +33,11 @@ input, select, textarea {
 }
 
 button  {
-  
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
 }
