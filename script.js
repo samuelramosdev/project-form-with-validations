@@ -9,13 +9,15 @@ const messageTextarea = document.querySelector('#message');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  // validações
-  isNameValid(nameInput.value);
-  isEmailValid(emailInput.value);
+  const nameIsValid = isNameValid(nameInput.value);
+  const emailIsValid = isEmailValid(emailInput.value);
+  const passwordIsValid = isPasswordValid(passwordInput.value, 8);
+  const selectIsValid = isSelectValid(jobSelect.value);
 
-  if (isNameValid && isEmailValid)
+  if (nameIsValid && emailIsValid && passwordIsValid) {
     form.submit();
-})
+  };
+});
 
 const isNameValid = (name) => {
   if (!name) {
@@ -26,16 +28,28 @@ const isNameValid = (name) => {
 }
 
 const isEmailValid = (email) => {
-  const emailRegex = new RegExp(
-    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/
-  );
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/;
 
-  const test = !emailRegex.test(email)
-
-  if (!test || !email) {
+  if (!emailRegex.test(email) || !email) {
     alert('Por favor, preencha seu email!');
     return false;
   }
 
   return true;
 }
+
+const isPasswordValid = (password, minDigits) => {
+  if (!password || password.length < minDigits) {
+    alert('A senha precisa ter no mínimo 8 dígitos!');
+    return false;
+  }
+  return true;
+}
+
+const isSelectValid = (select) => {
+  if (!select) {
+    alert('Por favor, selecione a sua situação')
+    return false;
+  }
+  return true;
+} 
