@@ -13,8 +13,9 @@ form.addEventListener('submit', (event) => {
   const emailIsValid = isEmailValid(emailInput.value);
   const passwordIsValid = isPasswordValid(passwordInput.value, 8);
   const selectIsValid = isSelectValid(jobSelect.value);
+  const TextareaIsValid = isTextareaValid(messageTextarea.value);
 
-  if (nameIsValid && emailIsValid && passwordIsValid) {
+  if (nameIsValid && emailIsValid && passwordIsValid && selectIsValid) {
     form.submit();
   };
 });
@@ -52,4 +53,12 @@ const isSelectValid = (select) => {
     return false;
   }
   return true;
-} 
+}
+
+const isTextareaValid = (message) => {
+  if (!message) {
+    alert('Por favor, escreva uma mensagem');
+    return false;
+  }
+  return;
+}
